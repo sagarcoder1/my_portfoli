@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <section class="gallery-section">
+        <h1 class="gallery-header">MY GALLERY</h1>
+        <div class="image-section-display">
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_348432197_630539905778095_9122175191202798026_n.jpg">
+                <img src="images/SnapInsta.to_348432197_630539905778095_9122175191202798026_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_364125984_3364416040371563_3254053094028652376_n.jpg">
+                <img src="images/SnapInsta.to_364125984_3364416040371563_3254053094028652376_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_432354271_921857242977167_2385498099052695483_n.jpg">
+                <img src="images/SnapInsta.to_432354271_921857242977167_2385498099052695483_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_432452652_393499449988467_3693835364660865677_n.jpg">
+                <img src="images/SnapInsta.to_432452652_393499449988467_3693835364660865677_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_441001829_344138315350373_4565283104595169769_n.jpg">
+                <img src="images/SnapInsta.to_441001829_344138315350373_4565283104595169769_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_441603353_2170964703253721_2004020312471617850_n.jpg">
+                <img src="images/SnapInsta.to_441603353_2170964703253721_2004020312471617850_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_456429342_17975870036733487_9032413585854951427_n.jpg">
+                <img src="images/SnapInsta.to_456429342_17975870036733487_9032413585854951427_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_457786685_17977116284733487_8767231835616084767_n.jpg">
+                <img src="images/SnapInsta.to_457786685_17977116284733487_8767231835616084767_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_457792159_17977116296733487_2108959173837741722_n.jpg">
+                <img src="images/SnapInsta.to_457792159_17977116296733487_2108959173837741722_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_457798441_17977116275733487_8622961696171818628_n.jpg">
+                <img src="images/SnapInsta.to_457798441_17977116275733487_8622961696171818628_n.jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/SnapInsta.to_458089535_17977116263733487_2772365477682617124_n (1).jpg">
+                <img src="images/SnapInsta.to_458089535_17977116263733487_2772365477682617124_n (1).jpg" alt="Gallery Image">
+            </div>
+            <div class="gallery-section-1" data-src="images/1736850342632.jpg">
+                <img src="images/1736850342632.jpg" alt="Gallery Image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close">&times;</span>
+            <img src="" alt="Full size image">
+            <div class="lightbox-nav">
+                <span class="lightbox-prev"><i class="fas fa-chevron-left"></i></span>
+                <span class="lightbox-next"><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Footer -->
+    <div id="footer"></div>
+
+    <script src="js/script.js"></script>
+    <script src="js/typing-effect.js"></script>
+    <script>
+        // Lightbox functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const lightbox = document.querySelector('.lightbox');
+            const lightboxImg = lightbox.querySelector('img');
+            const closeBtn = lightbox.querySelector('.lightbox-close');
+            const prevBtn = lightbox.querySelector('.lightbox-prev');
+            const nextBtn = lightbox.querySelector('.lightbox-next');
+            const galleryItems = document.querySelectorAll('.gallery-section-1');
+            let currentIndex = 0;
+
+            // Open lightbox
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateLightboxImage();
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+
+            // Close lightbox
+            closeBtn.addEventListener('click', () => {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+
+            // Close on background click
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+
+            // Navigation
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                updateLightboxImage();
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                updateLightboxImage();
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!lightbox.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    lightbox.classList.remove('active');
+                    document.body.style.overflow = '';
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    updateLightboxImage();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % galleryItems.length;
+                    updateLightboxImage();
+                }
+            });
+
+            function updateLightboxImage() {
+                const src = galleryItems[currentIndex].getAttribute('data-src');
+                lightboxImg.src = src;
+            }
+        });
+    </script>
+</body>
+</html> 
