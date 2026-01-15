@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Sagar Gupta</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div id="navbar"></div>
+
+    <section class="certificates-hero">
+        <div class="container">
+            <div class="certificates-hero-content">
+                <div>
+                    <p class="eyebrow">Verified Learning Trail</p>
+                    <h1>Certificates & Achievements</h1>
+                    <p>Every badge represents a milestone across web development, product design, cloud computing, and hackathon experiences.</p>
+                </div>
+                <div class="certificates-stats">
+                    <div class="certificate-stat">
+                        <span class="stat-label">Total Certificates</span>
+                        <strong id="certificateCount">0</strong>
+                    </div>
+                    <div class="certificate-stat">
+                        <span class="stat-label">Latest Credential</span>
+                        <strong id="latestCertificate">—</strong>
+                    </div>
+                </div>
+            </div>
+            <div class="certificate-controls">
+                <div class="certificate-search">
+                    <label for="certificateSearch" class="sr-only">Search certificates</label>
+                    <i class="fas fa-search"></i>
+                    <input type="search" id="certificateSearch" placeholder="Search by title, issuer, or skill">
+                </div>
+                <div class="certificate-filters" id="certificateFilters" role="tablist" aria-label="Certificate filters">
+                    <button type="button" class="active" data-filter="all" role="tab" aria-selected="true">All</button>
+                    <button type="button" data-filter="web" role="tab" aria-selected="false">Web Dev</button>
+                    <button type="button" data-filter="design" role="tab" aria-selected="false">Design</button>
+                    <button type="button" data-filter="cloud" role="tab" aria-selected="false">Cloud</button>
+                    <button type="button" data-filter="hackathon" role="tab" aria-selected="false">Hackathon</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="certificates-list">
+        <div class="container">
+            <div class="certificate-grid" id="certificateGrid" aria-live="polite"></div>
+        </div>
+    </section>
+
+    <section class="certificate-cta">
+        <div class="container">
+            <div class="cta-card">
+                <div>
+                    <p class="eyebrow">Need proof?</p>
+                    <h2>Ask for any credential</h2>
+                    <p>I’m happy to share the secure verification link or original certificate copy for any of these achievements.</p>
+                </div>
+                <div class="cta-actions">
+                    <a href="mailto:sagargupta134@gmail.com?subject=Certificate%20Verification%20Request" class="btn">Request Details</a>
+                    <a href="contact.html" class="btn btn-outline">Message Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <div class="certificate-modal" id="certificateModal" aria-hidden="true" role="dialog" aria-labelledby="certificateModalTitle">
+        <div class="certificate-modal-content">
+            <button class="modal-close" id="certificateModalClose" aria-label="Close details">&times;</button>
+            <div class="modal-image">
+                <img src="" alt="Certificate preview" id="certificateModalImage">
+            </div>
+            <div class="modal-details">
+                <p class="eyebrow" id="certificateModalCategory"></p>
+                <h3 id="certificateModalTitle"></h3>
+                <p class="modal-issuer" id="certificateModalIssuer"></p>
+                <p class="modal-description" id="certificateModalDescription"></p>
+                <ul class="modal-meta" id="certificateModalMeta"></ul>
+                <div class="modal-actions" id="certificateModalActions"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/theme-switcher.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/certificates.js"></script>
+</body>
+</html>
+

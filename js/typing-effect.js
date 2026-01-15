@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function() {
     const typingElement = document.querySelector('.typing');
     if (typingElement) {
